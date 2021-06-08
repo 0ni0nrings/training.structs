@@ -10,7 +10,7 @@ type contactInfo struct {
 type person struct {
 	firstName string
 	lastName  string
-	contact   contactInfo //contact filed assigned contactInfo struct
+	contact   contactInfo // contact filed assigned contactInfo struct
 }
 
 func main() {
@@ -23,6 +23,15 @@ func main() {
 		},
 	}
 
-	fmt.Printf("%+v\n", alex)
+	alex.updateName("alexy")
+	alex.print()
 
+}
+
+func (pointerToPerson *person) updateName(newFirstName string) { // use of pointer to change the name
+	(*pointerToPerson).firstName = newFirstName
+}
+
+func (p person) print() { // created a receiver with a print function
+	fmt.Printf("%+v\n", p)
 }
